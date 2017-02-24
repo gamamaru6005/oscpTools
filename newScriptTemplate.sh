@@ -16,22 +16,22 @@ USAGE="Usage: command -hv args"
 
 # --- Option processing --------------------------------------------
 if [ $# == 0 ] ; then
-    echo $USAGE
-    exit 1;
+	echo $USAGE
+	exit 1;
 fi
 
 # Parse Parameters #
 for ARG in $*; do
-  case $ARG in
-    -a|--alpha)
-      A=true 
-      ;;
-    -b=*|--beta=*)
-      B=${ARG#*=} 
-      ;;
-    *)
-      echo "Unknown Argument $ARG" ;;
-  esac
+	case $ARG in
+		-a|--alpha)
+A=true 
+;;
+-b=*|--beta=*)
+B=${ARG#*=} 
+;;
+*)
+echo "Unknown Argument $ARG" ;;
+esac
 done
 # --- Locks -------------------------------------------------------
 LOCK_FILE=/tmp/${SUBJECT}.lock
