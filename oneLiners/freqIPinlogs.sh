@@ -8,22 +8,25 @@ VERSION=0.1.0
 
 # --- Usage Syntax -------------------------------------------------
 usage() {
-	echo -n "$0 [FILE] [DELIMETER] [FIELD]
-In order to pull out all the IPs in a log file specify the file, delimeter, and 
+	echo -n "
+$0 [FILE] [DELIMETER] [FIELD]
+
+In order to pull out all the IPs in a log file specify the file, delimeter, and
 field number of the IP addresses.
 	Options:
-		-h,  --help        Display this help and exit
-		--version     Output version information and exit
+		-h,  --help  Display this help and exit
+		--version    Output version information and exit
 
 	Parameters:
-		FILE 	full or relative path to log file
-		DELIMETER 	the delimeter in log entries
-		FIELD 	field column to find the IP addresses
+		FILE       full or relative path to log file
+		DELIMETER  the delimeter in log entries
+		FIELD      field column to find the IP addresses
 
 	Examples:
 		$0 ./access.log ' ' 1
 		$0 /var/log/access.log '|' 4
-	"
+
+"
 }
 
 # --- Option processing --------------------------------------------
