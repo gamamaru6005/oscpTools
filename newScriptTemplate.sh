@@ -12,11 +12,28 @@
 # ------------------------------------------------------------------
 VERSION=0.1.0
 SUBJECT=some-unique-id
-USAGE="Usage: command -hv args"
+
+# --- Usage Syntax -------------------------------------------------
+usage() {
+	echo -n "${scriptName} [OPTION]... [FILE]...
+This is a script template.  Edit this description to print help to users.
+ Options:
+  -u, --username    Username for script
+  -p, --password    User password
+  --force           Skip all user interaction.  Implied 'Yes' to all actions.
+  -q, --quiet       Quiet (no output)
+  -l, --log         Print log to file
+  -s, --strict      Exit script with null variables.  i.e 'set -o nounset'
+  -v, --verbose     Output more information. (Items echoed to 'verbose')
+  -d, --debug       Runs script in BASH debug mode (set -x)
+  -h, --help        Display this help and exit
+      --version     Output version information and exit
+"
+}
 
 # --- Option processing --------------------------------------------
 if [ $# == 0 ] ; then
-	echo $USAGE
+	usage
 	exit 1;
 fi
 
@@ -28,6 +45,9 @@ for ARG in $*; do
 			;;
 		-b=*|--beta=*)
 			B=${ARG#*=} 
+			;;
+		-h|--help)
+			usage >&2
 			;;
 		*)
 			echo "Unknown Argument $ARG" ;;
