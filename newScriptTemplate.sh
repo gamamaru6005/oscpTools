@@ -24,14 +24,14 @@ fi
 for ARG in $*; do
 	case $ARG in
 		-a|--alpha)
-A=true 
-;;
--b=*|--beta=*)
-B=${ARG#*=} 
-;;
-*)
-echo "Unknown Argument $ARG" ;;
-esac
+			A=true 
+			;;
+		-b=*|--beta=*)
+			B=${ARG#*=} 
+			;;
+		*)
+			echo "Unknown Argument $ARG" ;;
+	esac
 done
 # --- Locks -------------------------------------------------------
 LOCK_FILE=/tmp/${SUBJECT}.lock
