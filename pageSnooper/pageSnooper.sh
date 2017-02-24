@@ -8,7 +8,7 @@ VERSION=0.1.0
 
 # --- Usage Syntax -------------------------------------------------
 usage() {
-	echo -n "${basename} [OPTION]... [FILE]...
+	echo -n "$0 [OPTION]... [FILE]...
 This is a script template.  Edit this description to print help to users.
  Options:
   -u, --url      Output all scrubbed URLs found in page
@@ -35,7 +35,8 @@ for ARG in $*; do
 			I=true
 			;;
 		--version)
-			echo -n "${basename} : Version $VERSION"
+			echo "$0 : Version $VERSION"
+			exit 0
 			;;
 		-h|--help)
 			usage >&2
