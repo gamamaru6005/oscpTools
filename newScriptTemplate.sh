@@ -11,7 +11,6 @@
 #     http://shflags.googlecode.com/svn/trunk/source/1.0/src/shflags
 # ------------------------------------------------------------------
 VERSION=0.1.0
-SUBJECT=some-unique-id
 
 # --- Usage Syntax -------------------------------------------------
 usage() {
@@ -32,6 +31,7 @@ This is a script template.  Edit this description to print help to users.
 }
 
 # --- Option processing --------------------------------------------
+# If not arguements are passed
 if [ $# == 0 ] ; then
 	usage
 	exit 1;
@@ -48,21 +48,12 @@ for ARG in $*; do
 			;;
 		-h|--help)
 			usage >&2
+			exit 0
 			;;
 		*)
 			echo "Unknown Argument $ARG" ;;
 	esac
 done
-# --- Locks -------------------------------------------------------
-LOCK_FILE=/tmp/${SUBJECT}.lock
-
-if [ -f "$LOCK_FILE" ]; then
-	echo "Script is already running"
-	exit
-fi
-
-trap "rm -f $LOCK_FILE" EXIT
-touch $LOCK_FILE
 
 # -- Body ---------------------------------------------------------
 #  SCRIPT LOGIC GOES HERE
